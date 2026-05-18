@@ -8,11 +8,12 @@
 
 ---
 
-## Overview
+# Overview
 
 This project is an AI-powered wearable mobility assistant designed for visually impaired people.
 
 The system uses:
+
 - YOLOv5 object detection
 - OCR text recognition
 - GPS location tracking
@@ -23,7 +24,7 @@ to provide real-time environmental awareness and audio feedback.
 
 ---
 
-## Features
+# Features
 
 - Real-time object detection
 - OCR text reading
@@ -31,10 +32,11 @@ to provide real-time environmental awareness and audio feedback.
 - Offline speech output
 - Raspberry Pi integration
 - Wearable smart assistant
+- Embedded AI processing
 
 ---
 
-## Technologies Used
+# Technologies Used
 
 - Python
 - OpenCV
@@ -47,7 +49,7 @@ to provide real-time environmental awareness and audio feedback.
 
 ---
 
-## Hardware Components
+# Hardware Components
 
 | Component | Description |
 |---|---|
@@ -59,31 +61,79 @@ to provide real-time environmental awareness and audio feedback.
 
 ---
 
-## System Architecture
+# Repository Structure
 
-![Architecture](diagrams/system-architecture.png)
-
----
-
-## Real-Time Hardware Setup
-
-![Hardware](hardware/live-system-demo.png)
-
----
-
-## Screenshots
-
-### Object Detection
-
-![YOLO](screenshots/yolo-detection.png)
-
-### OCR Detection
-
-![OCR](screenshots/ocr-detection.png)
+```bash
+AI-Powered-Mobility-Assistant-for-Visually-Impaired/
+│
+├── software/
+├── hardware/
+├── software-outputs/
+├── hardware-outputs/
+├── demo-video/
+├── diagram/
+├── certificate/
+├── research-paper/
+│
+├── README.md
+├── LICENSE
+├── requirements.txt
+└── .gitignore
+```
 
 ---
 
-## Performance Metrics
+# System Architecture
+
+![Architecture](diagram/system-architecture.png)
+
+---
+
+# Real-Time Hardware Setup
+
+![Hardware](hardware-outputs/device-wearable.jpeg)
+
+---
+
+# Hardware Internal Setup
+
+![Internal Hardware](hardware-outputs/internal-hardware.jpeg)
+
+---
+
+# Live System Demo
+
+![Live Demo](hardware-outputs/live-system-demo.jpeg)
+
+---
+
+# Software Output Screenshots
+
+## YOLO Object Detection
+
+![YOLO](software-outputs/yolo-detection.jpeg)
+
+---
+
+## OCR Text Detection
+
+![OCR](software-outputs/ocr-detection.jpeg)
+
+---
+
+## Backpack Detection
+
+![Backpack](software-outputs/backpack-detection.jpeg)
+
+---
+
+## Scissor Detection
+
+![Scissor](software-outputs/scissor-detection.jpeg)
+
+---
+
+# Performance Metrics
 
 | Metric | Value |
 |---|---|
@@ -95,7 +145,7 @@ to provide real-time environmental awareness and audio feedback.
 
 ---
 
-## Power Consumption
+# Power Consumption
 
 | Component | Power |
 |---|---|
@@ -107,7 +157,7 @@ to provide real-time environmental awareness and audio feedback.
 
 ---
 
-## Comparative Evaluation
+# Comparative Evaluation
 
 | System | Offline | Cost | GPS | OCR |
 |---|---|---|---|---|
@@ -117,42 +167,83 @@ to provide real-time environmental awareness and audio feedback.
 
 ---
 
-## IEEE Conference Presentation
+# IEEE Conference Presentation
 
-### Paper Title
+## Paper Title
+
 A Novel Low Cost AI-Powered Mobility Assistant For Visually Impaired
 
-### Conference
+---
+
+## Conference
+
 2026 International Conference on Multidisciplinary Innovations For Smart & Sustainable Future (MISSF 2026)
 
-### Status
+---
+
+## Status
+
 Presented at IEEE Conference  
 IEEE Xplore publication pending
 
-### Research Highlights
+---
+
+## Research Highlights
+
 - YOLOv5 object detection
 - OCR text recognition
 - GPS integration
 - Raspberry Pi embedded AI
 - Offline speech synthesis
+- Wearable AI assistant
 
 ---
 
-## Installation
+# Software Module
 
-### Clone Repository
+The `software/` folder contains:
+
+- YOLO object detection
+- OCR implementation
+- GPS integration
+- Voice output
+- Face recognition
+- Main AI execution pipeline
+
+---
+
+# Hardware Module
+
+The `hardware/` folder contains:
+
+- Raspberry Pi configuration
+- Camera interfacing
+- GPS communication
+- GPIO setup
+- Startup automation
+- Embedded hardware layer
+
+---
+
+# Installation
+
+## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AI-Powered-Mobility-Assistant-for-Visually-Impaired.git
+git clone https://github.com/Naveenbalaji25/AI-Powered-Mobility-Assistant-for-Visually-Impaired.git
 ```
 
-### Install Dependencies
+---
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run Project
+---
+
+## Run Project
 
 ```bash
 python main.py
@@ -160,27 +251,35 @@ python main.py
 
 ---
 
-## Applications
+# Applications
 
 - Assistive technology
 - Smart wearable systems
 - AI mobility systems
 - Embedded AI systems
+- Computer vision applications
 
 ---
 
-## Future Enhancements
+# Future Enhancements
 
 - Voice command support
 - Cloud integration
-- Distance estimation
 - Mobile application support
+- Distance estimation
+- Smart obstacle prediction
 
 ---
 
-## Author
+# Author
 
-Naveenbalaji R
+## Naveenbalaji R
 
 - LinkedIn: https://www.linkedin.com/in/naveen-balaji-r-412525274
 - GitHub: https://github.com/Naveenbalaji25
+
+---
+
+# License
+
+This project is licensed under the MIT License.
