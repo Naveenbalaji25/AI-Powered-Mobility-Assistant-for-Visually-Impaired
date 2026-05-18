@@ -1,1 +1,186 @@
+# =====================================================
+# AI-Powered Mobility Assistant
+# Hardware Main Configuration
+# Raspberry Pi Hardware Layer
+# =====================================================
 
+# -----------------------------
+# IMPORTS
+# -----------------------------
+
+import serial
+import cv2
+import pyttsx3
+from picamera2 import Picamera2
+import RPi.GPIO as GPIO
+import time
+import os
+
+# -----------------------------
+# GPIO CONFIGURATION
+# -----------------------------
+
+GPIO.setmode(GPIO.BCM)
+
+# Example GPIO Pins
+GPS_TX = 14
+GPS_RX = 15
+
+GPIO.setup(GPS_TX, GPIO.OUT)
+GPIO.setup(GPS_RX, GPIO.IN)
+
+print("GPIO Initialized Successfully")
+
+# -----------------------------
+# CAMERA INITIALIZATION
+# -----------------------------
+
+picam2 = Picamera2()
+
+picam2.configure(
+    picam2.create_preview_configuration(
+        main={"format": "RGB888", "size": (640, 480)}
+    )
+)
+
+picam2.start()
+
+print("Camera Started Successfully")
+
+# -----------------------------
+# GPS INITIALIZATION
+# -----------------------------
+
+try:
+    gps = serial.Serial(
+        '/dev/ttyS0',
+        baudrate=9600,
+        timeout=1
+    )
+
+    print("GPS Module Connected")
+
+except:
+    print("GPS Module Not Detected")
+
+# -----------------------------
+# AUDIO INITIALIZATION
+# -----------------------------
+
+engine = pyttsx3.init()
+
+engine.setProperty('rate', 150)
+engine.setProperty('volume', 1.0)
+
+print("Audio System Ready")
+
+# -----------------------------
+# SPEECH FUNCTION
+# -----------------------------
+
+def speak(message):
+
+    print("Speaking:", message)
+
+    engine.say(message)
+
+    engine.runAndWait()
+
+# -----------------------------
+# CAMERA TEST FUNCTION
+# -----------------------------
+
+def test_camera():
+
+    while True:
+
+        frame = picam2.capture_array()
+
+        cv2.imshow("Pi Camera Feed", frame)
+
+        key = cv2.waitKey(1)
+
+        if key == 27:
+            break
+
+    cv2.destroyAllWindows()
+
+# -----------------------------
+# GPS READER FUNCTION
+# -----------------------------
+
+def read_gps():
+
+    try:
+
+        data = gps.readline().decode(
+            'utf-8',
+            errors='ignore'
+        )
+
+        return data
+
+    except:
+
+        return "GPS Data Not Available"
+
+# -----------------------------
+# HARDWARE STATUS FUNCTION
+# -----------------------------
+
+def hardware_status():
+
+    print("\n===== HARDWARE STATUS =====")
+
+    print("Camera  : ACTIVE")
+    print("GPS     : ACTIVE")
+    print("Speaker : ACTIVE")
+    print("GPIO    : ACTIVE")
+
+# -----------------------------
+# AUTO START FUNCTION
+# -----------------------------
+
+def auto_start():
+
+    print("Starting AI Mobility Assistant...")
+
+    os.system(
+        "python3 /home/pi/AI-Mobility-Assistant/software/main.py"
+    )
+
+# -----------------------------
+# MAIN HARDWARE LOOP
+# -----------------------------
+
+if __name__ == "__main__":
+
+    hardware_status()
+
+    speak("Hardware system initialized successfully")
+
+    while True:
+
+        gps_data = read_gps()
+
+        print("GPS:", gps_data)
+
+        frame = picam2.capture_array()
+
+        cv2.imshow("Hardware Camera Feed", frame)
+
+        key = cv2.waitKey(1)
+
+        # ESC key
+        if key == 27:
+            break
+
+        # S key -> Start AI software
+        if key == ord('s'):
+            auto_start()
+
+    cv2.destroyAllWindows()
+
+    GPIO.cleanup()
+
+    print("Hardware System Shutdown")
